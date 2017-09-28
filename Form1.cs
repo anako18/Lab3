@@ -84,7 +84,6 @@ namespace Graphics3
             initY = null;
         }
 
-        //Changing colors
         private void color_button_Click(object sender, EventArgs e)
         {
             ColorDialog c = new ColorDialog();
@@ -147,11 +146,20 @@ namespace Graphics3
             filling = false;
         }
 
+        
         private void picture_button_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
             filename = openFileDialog1.FileName;
             image = new Bitmap(filename);
+            if ((image.Height < bmp.Height) || (image.Width < bmp.Width))
+            {
+                MessageBox.Show("Choose a different one.", "The image is too small!",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                image.Dispose();
+                fill_pic = false;
+                return;
+            }        
             image.Save("text.bmp");
             fill_pic = true;
         }
