@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 
 namespace Graphics3
 {
     public partial class Form1 : Form
     {
         Bitmap bmp;
+
+        Bitmap image;
 
         Color Border_color = Color.Black;
 
@@ -28,7 +31,6 @@ namespace Graphics3
             InitializeComponent();
         }
 
-
         private void Form1_Load(object sender, EventArgs e)
         {
             bmp = new Bitmap(draw_panel.Width, draw_panel.Height);
@@ -36,32 +38,22 @@ namespace Graphics3
             draw_panel.Image = (Image)bmp;
         }
 
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-            // g = Graphics.FromHwnd(draw_panel.Handle);
-            // g = Graphics.FromImage(bmp);
-        }
-
-
         //Drawing
         private void draw_panel_MouseMove(object sender, MouseEventArgs e)
         {
-            // Border_color = color_button.BackColor;
             bmp = new Bitmap(draw_panel.Image);
             g = Graphics.FromImage(bmp);
             if (startDraw)
             {
                 Pen p = new Pen(color_button.BackColor, 4);
-                Border_color = color_button.BackColor;
+                p.StartCap = p.EndCap = LineCap.Round;
                 g.DrawLine(p, new Point(initX ?? e.X, initY ?? e.Y), new Point(e.X, e.Y));
                 initX = e.X;
                 initY = e.Y;
             }
             draw_panel.Image = bmp;
+            Border_color = color_button.BackColor;
         }
-
-
 
         private void draw_panel_MouseDown(object sender, MouseEventArgs e)
         {
@@ -83,6 +75,7 @@ namespace Graphics3
             initY = null;
         }
 
+        //Changing colors
         private void color_button_Click(object sender, EventArgs e)
         {
             ColorDialog c = new ColorDialog();
@@ -102,7 +95,7 @@ namespace Graphics3
         }
 
 
-
+        //Filling with color
         private void recursive_serial_fill(int startx, int starty, Color fillcolor, Color targetcolor)
         {
             draw_panel.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
@@ -110,7 +103,9 @@ namespace Graphics3
             targetcolor = bmp.GetPixel(startx, starty);
             if (targetcolor.ToArgb().Equals(fillcolor.ToArgb()))
                 return;
+
             bmp.SetPixel(startx, starty, fillcolor);
+
             //Left border search
             int leftborder = startx;
             while ((leftborder > 0) && (bmp.GetPixel(leftborder - 1, starty).ToArgb().Equals(targetcolor.ToArgb())))
@@ -128,15 +123,17 @@ namespace Graphics3
             }
 
             //Up
-            if (starty > 0 && bmp.GetPixel(startx, starty - 1).ToArgb().Equals(targetcolor.ToArgb()))
-                recursive_serial_fill(startx, starty - 1, fillcolor, targetcolor);
+            for (int i = leftborder; i <= rightborder; i++)
+                if (starty > 0 && bmp.GetPixel(i, starty - 1).ToArgb().Equals(targetcolor.ToArgb()))
+                recursive_serial_fill(i, starty - 1, fillcolor, targetcolor);
 
             //Down
-            if (starty < bmp.Height - 1 && bmp.GetPixel(startx, starty + 1).ToArgb().Equals(targetcolor.ToArgb()))
-                recursive_serial_fill(startx, starty + 1, fillcolor, targetcolor);
+            for (int i = leftborder; i <= rightborder; i++)
+                if (starty < bmp.Height - 1 && bmp.GetPixel(i, starty + 1).ToArgb().Equals(targetcolor.ToArgb()))
+                    recursive_serial_fill(i, starty + 1, fillcolor, targetcolor);
 
             draw_panel.Image = bmp;
-
+            filling = false;
         }
 
     }

@@ -32,7 +32,8 @@
             this.color_button = new System.Windows.Forms.Button();
             this.fill_button = new System.Windows.Forms.Button();
             this.draw_panel = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.pen_button = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.draw_panel)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,7 +50,7 @@
             // 
             this.color_button.BackColor = System.Drawing.Color.Black;
             this.color_button.ForeColor = System.Drawing.Color.Black;
-            this.color_button.Location = new System.Drawing.Point(12, 37);
+            this.color_button.Location = new System.Drawing.Point(22, 37);
             this.color_button.Name = "color_button";
             this.color_button.Size = new System.Drawing.Size(32, 30);
             this.color_button.TabIndex = 2;
@@ -58,11 +59,11 @@
             // 
             // fill_button
             // 
-            this.fill_button.Location = new System.Drawing.Point(60, 41);
+            this.fill_button.Location = new System.Drawing.Point(251, 41);
             this.fill_button.Name = "fill_button";
-            this.fill_button.Size = new System.Drawing.Size(84, 23);
+            this.fill_button.Size = new System.Drawing.Size(143, 23);
             this.fill_button.TabIndex = 3;
-            this.fill_button.Text = "Заливка";
+            this.fill_button.Text = "Flood fill with color";
             this.fill_button.UseVisualStyleBackColor = true;
             this.fill_button.Click += new System.EventHandler(this.fill_button_Click);
             // 
@@ -74,33 +75,42 @@
             this.draw_panel.Size = new System.Drawing.Size(564, 460);
             this.draw_panel.TabIndex = 4;
             this.draw_panel.TabStop = false;
-            this.draw_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.draw_panel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.draw_panel_MouseDown);
             this.draw_panel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.draw_panel_MouseMove);
             this.draw_panel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.draw_panel_MouseUp);
             // 
-            // label1
+            // pen_button
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(186, 46);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "label1";
+            this.pen_button.Location = new System.Drawing.Point(74, 41);
+            this.pen_button.Name = "pen_button";
+            this.pen_button.Size = new System.Drawing.Size(143, 23);
+            this.pen_button.TabIndex = 5;
+            this.pen_button.Text = "Pen";
+            this.pen_button.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(428, 41);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(143, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Flood fill with picture";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(616, 561);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.pen_button);
             this.Controls.Add(this.draw_panel);
             this.Controls.Add(this.fill_button);
             this.Controls.Add(this.color_button);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Almost Paint";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.draw_panel)).EndInit();
             this.ResumeLayout(false);
@@ -114,7 +124,8 @@
         private System.Windows.Forms.Button color_button;
         private System.Windows.Forms.Button fill_button;
         private System.Windows.Forms.PictureBox draw_panel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button pen_button;
+        private System.Windows.Forms.Button button1;
     }
 }
 
