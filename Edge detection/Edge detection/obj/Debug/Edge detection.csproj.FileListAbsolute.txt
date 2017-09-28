@@ -1,0 +1,18 @@
+c:\users\sasha\documents\visual studio 2015\Projects\Edge detection\Edge detection\bin\Debug\Edge detection.exe.config
+c:\users\sasha\documents\visual studio 2015\Projects\Edge detection\Edge detection\bin\Debug\Edge detection.exe
+c:\users\sasha\documents\visual studio 2015\Projects\Edge detection\Edge detection\bin\Debug\Edge detection.pdb
+c:\users\sasha\documents\visual studio 2015\Projects\Edge detection\Edge detection\obj\Debug\Edge detection.csprojResolveAssemblyReference.cache
+c:\users\sasha\documents\visual studio 2015\Projects\Edge detection\Edge detection\obj\Debug\Edge_detection.Form1.resources
+c:\users\sasha\documents\visual studio 2015\Projects\Edge detection\Edge detection\obj\Debug\Edge_detection.Properties.Resources.resources
+c:\users\sasha\documents\visual studio 2015\Projects\Edge detection\Edge detection\obj\Debug\Edge detection.csproj.GenerateResource.Cache
+c:\users\sasha\documents\visual studio 2015\Projects\Edge detection\Edge detection\obj\Debug\Edge detection.exe
+c:\users\sasha\documents\visual studio 2015\Projects\Edge detection\Edge detection\obj\Debug\Edge detection.pdb
+C:\Users\Sasha\Documents\GitHub\Lab3\Edge detection\Edge detection\bin\Debug\Edge detection.exe.config
+C:\Users\Sasha\Documents\GitHub\Lab3\Edge detection\Edge detection\obj\Debug\Edge detection.exe
+C:\Users\Sasha\Documents\GitHub\Lab3\Edge detection\Edge detection\obj\Debug\Edge detection.pdb
+C:\Users\Sasha\Documents\GitHub\Lab3\Edge detection\Edge detection\bin\Debug\Edge detection.exe
+C:\Users\Sasha\Documents\GitHub\Lab3\Edge detection\Edge detection\bin\Debug\Edge detection.pdb
+C:\Users\Sasha\Documents\GitHub\Lab3\Edge detection\Edge detection\obj\Debug\Edge detection.csprojResolveAssemblyReference.cache
+C:\Users\Sasha\Documents\GitHub\Lab3\Edge detection\Edge detection\obj\Debug\Edge_detection.Form1.resources
+C:\Users\Sasha\Documents\GitHub\Lab3\Edge detection\Edge detection\obj\Debug\Edge_detection.Properties.Resources.resources
+C:\Users\Sasha\Documents\GitHub\Lab3\Edge detection\Edge detection\obj\Debug\Edge detection.csproj.GenerateResource.Cache
