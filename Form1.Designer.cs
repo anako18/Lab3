@@ -33,7 +33,8 @@
             this.fill_button = new System.Windows.Forms.Button();
             this.draw_panel = new System.Windows.Forms.PictureBox();
             this.pen_button = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.picture_button = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.draw_panel)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,21 +89,26 @@
             this.pen_button.Text = "Pen";
             this.pen_button.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // picture_button
             // 
-            this.button1.Location = new System.Drawing.Point(428, 41);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(143, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Flood fill with picture";
-            this.button1.UseVisualStyleBackColor = true;
+            this.picture_button.Location = new System.Drawing.Point(428, 41);
+            this.picture_button.Name = "picture_button";
+            this.picture_button.Size = new System.Drawing.Size(143, 23);
+            this.picture_button.TabIndex = 6;
+            this.picture_button.Text = "Flood fill with picture";
+            this.picture_button.UseVisualStyleBackColor = true;
+            this.picture_button.Click += new System.EventHandler(this.picture_button_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(616, 561);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.picture_button);
             this.Controls.Add(this.pen_button);
             this.Controls.Add(this.draw_panel);
             this.Controls.Add(this.fill_button);
@@ -125,7 +131,8 @@
         private System.Windows.Forms.Button fill_button;
         private System.Windows.Forms.PictureBox draw_panel;
         private System.Windows.Forms.Button pen_button;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button picture_button;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

@@ -17,6 +17,8 @@ namespace Graphics3
 
         Bitmap image;
 
+        string filename;
+
         Color Border_color = Color.Black;
 
         private Graphics g;
@@ -25,6 +27,7 @@ namespace Graphics3
         int? initY = null;
         bool startDraw = false;
         bool filling = false;
+        bool fill_pic = false;
 
         public Form1()
         {
@@ -61,8 +64,14 @@ namespace Graphics3
             {
                 int startx = e.X;
                 int starty = e.Y;
-                //filling_recursive(e.X, e.Y);
                 recursive_serial_fill(startx, starty, color_button.BackColor, bmp.GetPixel(startx, starty));
+                return;
+            }
+            else if (fill_pic)
+            {
+                int startx = e.X;
+                int starty = e.Y;
+                serial_fill_picture(startx, starty, image, bmp.GetPixel(startx, starty));
                 return;
             }
             startDraw = true;
@@ -83,6 +92,8 @@ namespace Graphics3
             {
                 color_button.BackColor = c.Color;
             }
+            filling = false;
+            fill_pic = false;
         }
 
 
@@ -95,7 +106,7 @@ namespace Graphics3
         }
 
 
-        //Filling with color
+        //Flood fill with color
         private void recursive_serial_fill(int startx, int starty, Color fillcolor, Color targetcolor)
         {
             draw_panel.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
@@ -131,6 +142,55 @@ namespace Graphics3
             for (int i = leftborder; i <= rightborder; i++)
                 if (starty < bmp.Height - 1 && bmp.GetPixel(i, starty + 1).ToArgb().Equals(targetcolor.ToArgb()))
                     recursive_serial_fill(i, starty + 1, fillcolor, targetcolor);
+
+            draw_panel.Image = bmp;
+            filling = false;
+        }
+
+        private void picture_button_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+            filename = openFileDialog1.FileName;
+            image = new Bitmap(filename);
+            image.Save("text.bmp");
+            fill_pic = true;
+        }
+
+        private void serial_fill_picture(int startx, int starty, Bitmap image, Color targetcolor)
+        {
+            draw_panel.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+            bmp.Save("bitmap.bmp");
+            targetcolor = bmp.GetPixel(startx, starty);
+            //if (targetcolor.ToArgb().Equals(fillcolor.ToArgb()))
+            //    return;
+
+            bmp.SetPixel(startx, starty, image.GetPixel(startx, starty));
+
+            //Left border search
+            int leftborder = startx;
+            while ((leftborder > 0) && (bmp.GetPixel(leftborder - 1, starty).ToArgb().Equals(targetcolor.ToArgb())))
+            {
+                bmp.SetPixel(leftborder - 1, starty, image.GetPixel(leftborder - 1, starty));
+                leftborder -= 1;
+            }
+
+            //Right border search
+            int rightborder = startx;
+            while ((rightborder < draw_panel.Width - 1) && (bmp.GetPixel(rightborder + 1, starty).ToArgb().Equals(targetcolor.ToArgb())))
+            {
+                bmp.SetPixel(rightborder + 1, starty, image.GetPixel(rightborder + 1, starty));
+                rightborder += 1;
+            }
+
+            //Up
+            for (int i = leftborder; i <= rightborder; i++)
+                if (starty > 0 && bmp.GetPixel(i, starty - 1).ToArgb().Equals(targetcolor.ToArgb()))
+                    serial_fill_picture(i, starty - 1, image, targetcolor);
+
+            //Down
+            for (int i = leftborder; i <= rightborder; i++)
+                if (starty < bmp.Height - 1 && bmp.GetPixel(i, starty + 1).ToArgb().Equals(targetcolor.ToArgb()))
+                    serial_fill_picture(i, starty + 1, image, targetcolor);
 
             draw_panel.Image = bmp;
             filling = false;
