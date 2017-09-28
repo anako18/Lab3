@@ -129,72 +129,13 @@ namespace Graphics3
 
             //Up
             if (starty > 0 && bmp.GetPixel(startx, starty - 1).ToArgb().Equals(targetcolor.ToArgb()))
-            recursive_serial_fill(startx, starty - 1, fillcolor, targetcolor);
+                recursive_serial_fill(startx, starty - 1, fillcolor, targetcolor);
 
             //Down
-            if (starty < bmp.Height-1 && bmp.GetPixel(startx, starty + 1).ToArgb().Equals(targetcolor.ToArgb()))
+            if (starty < bmp.Height - 1 && bmp.GetPixel(startx, starty + 1).ToArgb().Equals(targetcolor.ToArgb()))
                 recursive_serial_fill(startx, starty + 1, fillcolor, targetcolor);
 
             draw_panel.Image = bmp;
-
-        }
-
-
-
-
-        private void filling_recursive(int x, int y)
-        {
-            draw_panel.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
-            bmp.Save("bitmap.bmp");
-
-            //Если цвет = цвету границы
-          //  if ((bmp.GetPixel(x, y).ToArgb().Equals(Border_color.ToArgb())))
-            //    return;
-
-
-            //Поиск левой границы
-
-
-
-            ////Если цвет = цвету границы
-            //if (equal_color(bmp.GetPixel(x, y), Border_color))
-            //    return;
-            //else
-            //    //Установка текущего пикселя
-            //    bmp.SetPixel(x, y, color_button.BackColor);
-
-            //int i_x = x; //сохранение init x 
-
-            ////До левой границы
-            //while ((x > 1) &&
-            //  !equal_color(bmp.GetPixel(x - 1, y), Border_color))
-            //{
-            //    bmp.SetPixel(x - 1, y, color_button.BackColor);
-            //    x -= 1;
-            //}
-            while ((x > 1) &&
-            !(bmp.GetPixel(x - 1, y).ToArgb().Equals(Border_color.ToArgb())))
-            {
-                bmp.SetPixel(x - 1, y, color_button.BackColor);
-                x -= 1;
-            }
-
-            ////До правой границы
-            //while ((i_x < draw_panel.Width - 1) &&
-            //!equal_color(bmp.GetPixel(i_x + 1, y), Border_color))
-            //{
-            //    bmp.SetPixel(i_x + 1, y, color_button.BackColor);
-            //    i_x += 1;
-            //}
-
-            //if (y > 1)
-            //    filling_recursive(startx, y - 1);
-
-            ////if (y < draw_panel.Height)
-            ////   filling_recursive(initx, inity + 1);
-
-            //// filling = false;
-            //draw_panel.Image = bmp;
 
         }
 
