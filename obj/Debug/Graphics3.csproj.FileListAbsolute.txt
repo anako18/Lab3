@@ -7,3 +7,12 @@ c:\users\настя\documents\visual studio 2015\Projects\Graphics3\obj\Debug\Gr
 c:\users\настя\documents\visual studio 2015\Projects\Graphics3\obj\Debug\Graphics3.csproj.GenerateResource.Cache
 c:\users\настя\documents\visual studio 2015\Projects\Graphics3\obj\Debug\Graphics3.exe
 c:\users\настя\documents\visual studio 2015\Projects\Graphics3\obj\Debug\Graphics3.pdb
+C:\Users\user\Source\Repos\Lab3\bin\Debug\Graphics3.exe.config
+C:\Users\user\Source\Repos\Lab3\bin\Debug\Graphics3.exe
+C:\Users\user\Source\Repos\Lab3\bin\Debug\Graphics3.pdb
+C:\Users\user\Source\Repos\Lab3\obj\Debug\Graphics3.csprojResolveAssemblyReference.cache
+C:\Users\user\Source\Repos\Lab3\obj\Debug\Graphics3.Form1.resources
+C:\Users\user\Source\Repos\Lab3\obj\Debug\Graphics3.Properties.Resources.resources
+C:\Users\user\Source\Repos\Lab3\obj\Debug\Graphics3.csproj.GenerateResource.Cache
+C:\Users\user\Source\Repos\Lab3\obj\Debug\Graphics3.exe
+C:\Users\user\Source\Repos\Lab3\obj\Debug\Graphics3.pdb
