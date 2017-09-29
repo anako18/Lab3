@@ -16,3 +16,12 @@ C:\Users\user\Source\Repos\Lab3\obj\Debug\Graphics3.Properties.Resources.resourc
 C:\Users\user\Source\Repos\Lab3\obj\Debug\Graphics3.csproj.GenerateResource.Cache
 C:\Users\user\Source\Repos\Lab3\obj\Debug\Graphics3.exe
 C:\Users\user\Source\Repos\Lab3\obj\Debug\Graphics3.pdb
+C:\Users\Sasha\Documents\GitHub\Lab3\bin\Debug\Graphics3.exe.config
+C:\Users\Sasha\Documents\GitHub\Lab3\obj\Debug\Graphics3.exe
+C:\Users\Sasha\Documents\GitHub\Lab3\obj\Debug\Graphics3.pdb
+C:\Users\Sasha\Documents\GitHub\Lab3\bin\Debug\Graphics3.exe
+C:\Users\Sasha\Documents\GitHub\Lab3\bin\Debug\Graphics3.pdb
+C:\Users\Sasha\Documents\GitHub\Lab3\obj\Debug\Graphics3.csprojResolveAssemblyReference.cache
+C:\Users\Sasha\Documents\GitHub\Lab3\obj\Debug\Graphics3.Form1.resources
+C:\Users\Sasha\Documents\GitHub\Lab3\obj\Debug\Graphics3.Properties.Resources.resources
+C:\Users\Sasha\Documents\GitHub\Lab3\obj\Debug\Graphics3.csproj.GenerateResource.Cache

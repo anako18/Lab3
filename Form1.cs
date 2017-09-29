@@ -24,6 +24,7 @@ namespace Graphics3
         Color Border_color = Color.Black;
 
 		Pen p;
+        bool temp;
 
         private Graphics g;
         //Start of drawing 
@@ -235,9 +236,14 @@ namespace Graphics3
 		private void draw_panel_SizeChanged(object sender, EventArgs e)
 		{
 			Bitmap b = new Bitmap(bmp, draw_panel.Size);
-			bmp = b;
-			draw_panel.Image = (Image)bmp;
-		}
+            if (bmp.Width < b.Width || bmp.Height < b.Height)
+            {
+                bmp = b;
+                Graphics g = Graphics.FromImage(bmp);
+                g.Clear(Color.White);
+                g.DrawImageUnscaled(draw_panel.Image, 0, 0, draw_panel.Width, draw_panel.Height);
+            }
+        }
 	}
 
 
