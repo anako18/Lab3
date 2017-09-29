@@ -17,9 +17,14 @@ namespace Graphics3
 
         Bitmap image;
 
-        string filename;
+		Bitmap input;
+
+        string filename = "";
 
         Color Border_color = Color.Black;
+
+		Pen p;
+        bool temp;
 
         private Graphics g;
         //Start of drawing 
@@ -36,20 +41,21 @@ namespace Graphics3
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            bmp = new Bitmap(draw_panel.Width, draw_panel.Height);
-            draw_panel.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
-            draw_panel.Image = (Image)bmp;
-        }
+			bmp = new Bitmap(draw_panel.Width, draw_panel.Height);
+			draw_panel.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+			draw_panel.Image = (Image)bmp;
+			p = new Pen(color_button.BackColor, 4);
+			p.StartCap = p.EndCap = LineCap.Round;
+		}
 
         //Drawing
         private void draw_panel_MouseMove(object sender, MouseEventArgs e)
         {
-            bmp = new Bitmap(draw_panel.Image);
+            //bmp = new Bitmap(draw_panel.Image);
             g = Graphics.FromImage(bmp);
             if (startDraw)
             {
-                Pen p = new Pen(color_button.BackColor, 4);
-                p.StartCap = p.EndCap = LineCap.Round;
+                
                 g.DrawLine(p, new Point(initX ?? e.X, initY ?? e.Y), new Point(e.X, e.Y));
                 initX = e.X;
                 initY = e.Y;
@@ -91,8 +97,8 @@ namespace Graphics3
             {
                 color_button.BackColor = c.Color;
             }
-            filling = false;
-            fill_pic = false;
+            //filling = false;
+            //fill_pic = false;
         }
 
 
@@ -108,8 +114,8 @@ namespace Graphics3
         //Flood fill with color
         private void recursive_serial_fill(int startx, int starty, Color fillcolor, Color targetcolor)
         {
-            draw_panel.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
-            bmp.Save("bitmap.bmp");
+            //draw_panel.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+            //bmp.Save("bitmap.bmp");
             targetcolor = bmp.GetPixel(startx, starty);
             if (targetcolor.ToArgb().Equals(fillcolor.ToArgb()))
                 return;
@@ -149,25 +155,42 @@ namespace Graphics3
         
         private void picture_button_Click(object sender, EventArgs e)
         {
-            openFileDialog1.ShowDialog();
-            filename = openFileDialog1.FileName;
-            image = new Bitmap(filename);
-            if ((image.Height < bmp.Height) || (image.Width < bmp.Width))
-            {
-                MessageBox.Show("Choose a different one.", "The image is too small!",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                image.Dispose();
-                fill_pic = false;
-                return;
-            }        
-            image.Save("text.bmp");
-            fill_pic = true;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK);
+			{
+				filename = openFileDialog1.FileName;
+				if (filename != "")
+				{
+					input = new Bitmap(filename);
+					image = new Bitmap(draw_panel.Image as Bitmap);
+
+					for (int y = 0; y < image.Height; y++)
+					{
+						for (int x = 0; x < image.Width; x++)
+						{
+							int ix = x % input.Width;
+							int iy = y % input.Height;
+							image.SetPixel(x, y, input.GetPixel(ix, iy));
+						}
+					}
+
+					//if ((image.Height < bmp.Height) || (image.Width < bmp.Width))
+					//{
+					//	MessageBox.Show("Choose a different one.", "The image is too small!",
+					//	MessageBoxButtons.OK, MessageBoxIcon.Error);
+					//	image.Dispose();
+					//	fill_pic = false;
+					//	return;
+					//}
+					image.Save("text.bmp");
+					fill_pic = true;
+				}
+			}
         }
 
         private void serial_fill_picture(int startx, int starty, Bitmap image, Color targetcolor)
         {
-            draw_panel.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
-            bmp.Save("bitmap.bmp");
+            //draw_panel.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+            //bmp.Save("bitmap.bmp");
             targetcolor = bmp.GetPixel(startx, starty);
             //if (targetcolor.ToArgb().Equals(fillcolor.ToArgb()))
             //    return;
@@ -201,10 +224,27 @@ namespace Graphics3
                     serial_fill_picture(i, starty + 1, image, targetcolor);
 
             draw_panel.Image = bmp;
-            filling = false;
+            fill_pic = false;
         }
 
-    }
+		private void button1_Click(object sender, EventArgs e)
+		{
+			bmp = new Bitmap(draw_panel.Width, draw_panel.Height);
+			draw_panel.Image = (Image)bmp;
+		}
+
+		private void draw_panel_SizeChanged(object sender, EventArgs e)
+		{
+			Bitmap b = new Bitmap(bmp, draw_panel.Size);
+            if (bmp.Width < b.Width || bmp.Height < b.Height)
+            {
+                bmp = b;
+                Graphics g = Graphics.FromImage(bmp);
+                g.Clear(Color.White);
+                g.DrawImageUnscaled(draw_panel.Image, 0, 0, draw_panel.Width, draw_panel.Height);
+            }
+        }
+	}
 
 
 
